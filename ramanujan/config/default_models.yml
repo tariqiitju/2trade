@@ -1,0 +1,115 @@
+# Default model configurations for Ramanujan framework
+
+# Prediction Models (Supervised)
+prediction_models:
+  xgboost:
+    model_type: xgboost
+    parameters:
+      n_estimators: 100
+      max_depth: 6
+      learning_rate: 0.1
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+      objective: "reg:squarederror"
+    
+  lightgbm:
+    model_type: lightgbm
+    parameters:
+      n_estimators: 100
+      max_depth: -1
+      learning_rate: 0.1
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+      objective: "regression"
+      verbose: -1
+    
+  random_forest:
+    model_type: random_forest
+    parameters:
+      n_estimators: 100
+      max_depth: null
+      min_samples_split: 2
+      min_samples_leaf: 1
+      random_state: 42
+      n_jobs: -1
+    
+  linear_regression:
+    model_type: linear_regression
+    parameters: {}
+    
+  ridge_regression:
+    model_type: ridge_regression
+    parameters:
+      alpha: 1.0
+      random_state: 42
+    
+  lstm:
+    model_type: lstm
+    parameters:
+      units: 50
+      dropout: 0.2
+      recurrent_dropout: 0.2
+      epochs: 100
+      batch_size: 32
+      sequence_length: 10
+    
+  garch:
+    model_type: garch
+    parameters:
+      vol: "Garch"
+      p: 1
+      q: 1
+      dist: "normal"
+
+# Clustering Models (Unsupervised)  
+clustering_models:
+  kmeans:
+    model_type: kmeans
+    parameters:
+      n_clusters: 8
+      init: "k-means++"
+      n_init: 10
+      max_iter: 300
+      random_state: 42
+    
+  gmm:
+    model_type: gmm
+    parameters:
+      n_components: 8
+      covariance_type: "full"
+      max_iter: 100
+      random_state: 42
+    
+  hmm:
+    model_type: hmm
+    parameters:
+      n_components: 3
+      covariance_type: "full"
+      n_iter: 100
+      random_state: 42
+
+# Correlation Models
+correlation_models:
+  pearson:
+    model_type: pearson
+    parameters: {}
+    
+  spearman:
+    model_type: spearman
+    parameters: {}
+    
+  kendall:
+    model_type: kendall
+    parameters: {}
+    
+  tail_dependence:
+    model_type: tail_dependence
+    parameters:
+      threshold: 0.95
+    
+  mutual_information:
+    model_type: mutual_information
+    parameters:
+      random_state: 42

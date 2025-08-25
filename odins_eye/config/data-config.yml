@@ -1,0 +1,162 @@
+# Module-0 Configuration - Production Setup
+# Customized configuration for historical data collection
+
+# Data Source Configuration
+data_sources:
+  yahoo_finance:
+    enabled: true
+    rate_limit: 5  # requests per second
+    timeout: 30    # seconds
+    retry_attempts: 3
+    priority: 1    # lower number = higher priority
+
+  alpha_vantage:
+    enabled: false
+    api_key: "YOUR_ALPHA_VANTAGE_API_KEY"
+    rate_limit: 5   # free tier: 5 calls/minute
+    timeout: 30
+    retry_attempts: 3
+    priority: 2
+
+  polygon:
+    enabled: false
+    api_key: "YOUR_POLYGON_API_KEY"
+    rate_limit: 5
+    timeout: 30
+    retry_attempts: 3
+    priority: 3
+
+  fred:
+    enabled: true
+    api_key: "684e67a4a3b7a9a27729a1ed62546f2e"
+    rate_limit: 10
+    timeout: 30
+    retry_attempts: 3
+    priority: 4
+
+  newsapi:
+    enabled: true
+    api_key: "972972a223b3486ca754f0f90b49485a"
+    rate_limit: 1000  # requests per day
+    timeout: 30
+    retry_attempts: 3
+    priority: 5
+
+# Storage Configuration - Optimized for historical data
+storage:
+  type: "file"  # file, database, s3
+  base_path: "W:/market-data"
+  compression: "snappy"  # snappy, gzip, lz4
+  format: "parquet"      # parquet, csv, hdf5
+  partitioning:
+    - "year"
+    - "month"
+    - "symbol"
+  retention_days: 2555   # ~7 years
+  backup:
+    enabled: false
+    s3_bucket: "your-backup-bucket"
+    backup_schedule: "0 2 * * *"  # daily at 2 AM
+
+# Historical Data Collection Settings
+historical_data:
+  start_date: "2010-01-01"  # Start date for historical collection (15 years)
+  end_date: null            # null = today
+
+  # Yahoo Finance interval configurations with realistic limitations
+  intervals:
+    "1d":      # Daily data
+      enabled: true
+      lookback_days: 5475  # 15 years
+      directory: "daily"
+      description: "Long-term backtesting and strategy development"
+    "1h":      # Hourly data
+      enabled: false       # Disabled due to Yahoo limitations
+      lookback_days: 60    # Recent weeks only (Yahoo restricts further back)
+      directory: "hourly"
+      description: "Intraday analysis (limited availability)"
+    "30m":     # 30-minute data
+      enabled: false       # Disabled due to Yahoo limitations
+      lookback_days: 30    # ~1 month (Yahoo limit)
+      directory: "30min"
+      description: "Short-term intraday patterns (very limited)"
+    "15m":     # 15-minute data
+      enabled: false       # Disabled due to Yahoo limitations
+      lookback_days: 30    # ~1 month (Yahoo limit)
+      directory: "15min"
+      description: "High-frequency intraday analysis (very limited)"
+    "5m":      # 5-minute data
+      enabled: false       # Disabled due to Yahoo limitations
+      lookback_days: 30    # ~1 month (Yahoo limit)
+      directory: "5min"
+      description: "Ultra-high frequency trading simulation (very limited)"
+    "1m":      # 1-minute data
+      enabled: true
+      lookback_days: 7     # ~1 week (Yahoo limit)
+      directory: "1min"
+      description: "Real-time simulation and very short-term strategies"
+
+  max_symbols_per_batch: 5   # Reduced for multiple intervals
+  batch_delay_seconds: 2     # Increased delay for rate limiting
+  checkpoint_frequency: 50   # Save progress every N symbols
+
+# Cache Configuration
+cache:
+  enabled: true
+  memory:
+    size_mb: 512
+    ttl_seconds: 300  # 5 minutes
+  file:
+    enabled: true
+    directory: "W:/market-data/cache"
+    max_size_gb: 5
+
+# Simulation Configuration
+simulation:
+  max_concurrent_sessions: 10
+  default_playback_speed: 1.0
+  max_playback_speed: 1000.0
+  session_timeout_minutes: 60
+  chunk_size: 1000  # records per chunk
+  data_feeds:
+    market_data: true
+    news_data: true
+    economic_data: true
+
+# Data Quality Configuration
+data_quality:
+  enabled: true
+  outlier_detection:
+    zscore_threshold: 3.0
+    iqr_factor: 1.5
+  missing_data:
+    max_gap_minutes: 60  # for minute data
+    fill_method: "forward"  # forward, backward, interpolate
+  validation_rules:
+    price_change_limit: 0.50  # 50% max price change (for volatile stocks)
+    volume_spike_threshold: 10.0  # 10x average volume
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "json"  # json, text
+  file:
+    enabled: true
+    path: "W:/market-data/logs/module0.log"
+    max_size_mb: 100
+    backup_count: 5
+  console:
+    enabled: true
+    colored: true
+
+# Development Configuration
+development:
+  debug: true
+  hot_reload: false
+  mock_data: false
+  sample_data_symbols:
+    - "AAPL"
+    - "GOOGL"
+    - "MSFT"
+    - "TSLA"
+    - "SPY"

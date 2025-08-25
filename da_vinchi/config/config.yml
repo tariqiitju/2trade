@@ -1,0 +1,192 @@
+# Da Vinchi Pipeline Configuration
+# Main configuration for the 8-stage feature engineering and modeling pipeline
+
+pipeline:
+  # Pipeline execution settings
+  name: "da_vinchi_pipeline"
+  version: "1.0.0"
+  parallel_execution: true
+  max_workers: 4
+  
+  # Data settings
+  data_root: "W:/market-data"  # Override with DATA_ROOT env var
+  output_root: "da_vinchi/workspace"
+  cache_enabled: true
+  cache_ttl_hours: 24
+
+# Stage configurations
+stages:
+  stage0_data_hygiene:
+    enabled: true
+    winsorize_percentiles: [1, 99]  # Remove extreme outliers
+    robust_z_score: true
+    forward_fill_allowed: ["earnings_date", "dividend_date"]  # Only truly stale features
+    corporate_actions_adjust: true
+    
+  stage1_ohlcv_features:
+    enabled: true
+    features:
+      returns:
+        - simple_return
+        - log_return
+        - rolling_returns: [5, 10, 21, 63, 126]  # 1w, 2w, 1m, 3m, 6m
+      volatility:
+        - realized_vol: [20, 60]  # 1m, 3m windows
+        - parkinson_vol: [20]
+        - garman_klass_vol: [20]
+      momentum:
+        - ema_spans: [12, 26]
+        - macd: {fast: 12, slow: 26, signal: 9}
+        - rsi: {period: 14}
+        - stochastic: {k_period: 14, d_period: 3}
+        - adx: {period: 14}
+      bands:
+        - bollinger: {period: 20, std_dev: 2}
+        - atr: {period: 14}
+      liquidity:
+        - amihud_illiquidity: {window: 20}
+        - roll_spread: true
+        
+  stage2_cross_sectional:
+    enabled: true
+    benchmark_symbol: "VOO"  # Use VOO as market benchmark
+    beta_window: 60  # 3-month rolling beta
+    cross_sectional_features:
+      - momentum_rank: {period: 126}  # 6-month momentum
+      - volatility_rank: {period: 20}
+      - liquidity_rank: {period: 20}
+    rank_method: "pct_rank"  # percentile ranking
+    
+  stage3_regimes:
+    enabled: true
+    regime_clustering:
+      method: "kmeans"
+      n_clusters: 4
+      features: ["vol_20", "macd", "dollar_volume_z"]
+      majority_filter_days: 3  # Smooth regime transitions
+    seasonality:
+      cyclical_encoding: ["day_of_week", "month_of_year"]
+      turn_of_month_window: 3  # Days before/after month end
+      event_windows:
+        earnings: 3  # Days before/after earnings
+        
+  stage4_relationships:
+    enabled: true
+    correlation:
+      method: "spearman"  # Less sensitive to outliers
+      window: 90  # 3-month rolling correlation
+      min_correlation: 0.4  # Minimum for peer selection
+      max_peers: 10  # Top-k peers per instrument
+    lead_lag:
+      max_lags: 5  # Check up to 5-day lags
+      min_ccf: 0.3  # Minimum cross-correlation
+      significance_test: "bartlett"
+    cointegration:
+      method: "engle_granger"
+      adf_significance: 0.05
+      min_half_life: 1  # Minimum mean reversion half-life
+      max_half_life: 30  # Maximum mean reversion half-life
+      
+  stage5_cross_features:
+    enabled: true
+    peer_aggregation:
+      weight_method: "correlation"  # Weight by correlation strength
+      features: ["log_return", "volatility", "momentum"]
+    lead_lag_features:
+      max_features_per_instrument: 5  # Limit feature explosion
+    spread_features:
+      z_score_normalization: true
+      momentum_features: true
+      
+  stage6_alt_data:
+    enabled: true
+    news_sentiment:
+      recency_decay: 0.1  # Lambda for time-weighted sentiment
+      aggregation_window: 1  # Daily aggregation
+      shock_threshold: 2.0  # Z-score threshold for news volume shock
+    macro_factors:
+      factors:
+        - "VIX"  # Volatility index
+        - "DGS10"  # 10-year treasury
+        - "DGS2"  # 2-year treasury (for yield curve slope)
+        - "DEXUSEU"  # USD/EUR exchange rate
+        - "DCOILWTICO"  # WTI crude oil
+      surprise_transform: true
+      
+  stage7_targets:
+    enabled: true
+    forward_returns:
+      horizons: [1, 5, 10, 21]  # 1d, 1w, 2w, 1m forward returns
+    classification_labels:
+      quantiles: [0.3, 0.7]  # Bottom 30%, middle 40%, top 30%
+    volatility_targets:
+      forward_vol_horizon: 21  # 1-month forward volatility
+    profitability_proxies:
+      mae_mfe_horizon: 21  # Max adverse/favorable excursion
+      breakout_continuation: true
+      
+  stage8_model_prep:
+    enabled: true
+    time_splits:
+      method: "expanding_window"
+      initial_train_years: 5
+      validation_months: 12
+      test_months: 6
+      refit_frequency: "quarterly"
+    scaling:
+      method: "robust"  # Robust to outliers
+      fit_on_train_only: true
+    feature_selection:
+      correlation_threshold: 0.95  # Remove highly correlated features
+      vif_threshold: 10  # Variance inflation factor
+      importance_threshold: 0.001  # Feature importance cutoff
+    missing_data:
+      imputation: "median"  # Use training period median
+      max_missing_pct: 0.5  # Drop features with >50% missing
+
+# Model configurations for Ramanujan integration
+models:
+  default_models:
+    - xgboost
+    - lightgbm
+    - random_forest
+    - linear_regression
+  
+  automl:
+    max_models: 10
+    time_budget_minutes: 30
+    cross_validation_folds: 5
+    
+  ensemble:
+    method: "weighted_average"
+    weight_method: "validation_performance"
+    max_ensemble_size: 5
+
+# Middleware settings
+middleware:
+  data_routing:
+    buffer_size_mb: 500
+    parallel_processing: true
+  
+  model_selection:
+    dynamic_switching: true
+    performance_window: 252  # 1 year for model performance tracking
+    switching_threshold: 0.05  # Switch if performance drops >5%
+    
+  monitoring:
+    log_level: "INFO"
+    metrics_tracking: true
+    alert_thresholds:
+      data_quality: 0.8  # Minimum data quality score
+      feature_drift: 2.0  # Z-score threshold for feature drift
+
+# Integration settings
+integration:
+  odins_eye:
+    auto_discover_instruments: true
+    benchmark_symbols: ["VOO", "SPY"]  # Fallback benchmarks
+    
+  ramanujan:
+    auto_model_registration: true
+    feature_importance_tracking: true
+    model_persistence: true

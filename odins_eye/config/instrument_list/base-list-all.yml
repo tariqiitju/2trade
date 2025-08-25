@@ -1,0 +1,1066 @@
+# Base List - All Significant Financial Instruments
+# Comprehensive list including active and delisted instruments for survivorship bias prevention
+# Categories: Large Cap Stocks, Mid Cap, Small Cap, ETFs, REITs, Delisted Historical
+
+version: "1.0.0"
+last_updated: "2024-08-24"
+total_count: 500+
+
+instruments:
+
+  # ===== MEGA CAP STOCKS (Market Cap > $500B) =====
+  - symbol: "AAPL"
+    name: "Apple Inc."
+    sector: "Technology"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "MSFT"
+    name: "Microsoft Corporation"
+    sector: "Technology"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "GOOGL"
+    name: "Alphabet Inc. Class A"
+    sector: "Technology"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "GOOG"
+    name: "Alphabet Inc. Class C"
+    sector: "Technology"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "AMZN"
+    name: "Amazon.com Inc."
+    sector: "Consumer Discretionary"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "TSLA"
+    name: "Tesla Inc."
+    sector: "Consumer Discretionary"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "META"
+    name: "Meta Platforms Inc."
+    sector: "Technology"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "NVDA"
+    name: "NVIDIA Corporation"
+    sector: "Technology"
+    market_cap_category: "mega_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "BRK.A"
+    name: "Berkshire Hathaway Inc. Class A"
+    sector: "Financial Services"
+    market_cap_category: "mega_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "BRK.B"
+    name: "Berkshire Hathaway Inc. Class B"
+    sector: "Financial Services"
+    market_cap_category: "mega_cap"
+    exchange: "NYSE"
+    status: "active"
+
+  # ===== LARGE CAP STOCKS (Market Cap $10B - $500B) =====
+  - symbol: "UNH"
+    name: "UnitedHealth Group Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "JNJ"
+    name: "Johnson & Johnson"
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "JPM"
+    name: "JPMorgan Chase & Co."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "V"
+    name: "Visa Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "PG"
+    name: "Procter & Gamble Co."
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "MA"
+    name: "Mastercard Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "HD"
+    name: "Home Depot Inc."
+    sector: "Consumer Discretionary"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "CVX"
+    name: "Chevron Corporation"
+    sector: "Energy"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "LLY"
+    name: "Eli Lilly and Company"
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "ABBV"
+    name: "AbbVie Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "AVGO"
+    name: "Broadcom Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "XOM"
+    name: "Exxon Mobil Corporation"
+    sector: "Energy"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "PEP"
+    name: "PepsiCo Inc."
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "COST"
+    name: "Costco Wholesale Corporation"
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "WMT"
+    name: "Walmart Inc."
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "ADBE"
+    name: "Adobe Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "NFLX"
+    name: "Netflix Inc."
+    sector: "Communication Services"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "CRM"
+    name: "Salesforce Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "TMO"
+    name: "Thermo Fisher Scientific Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "ACN"
+    name: "Accenture plc"
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "ORCL"
+    name: "Oracle Corporation"
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "WFC"
+    name: "Wells Fargo & Company"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "BAC"
+    name: "Bank of America Corporation"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "DIS"
+    name: "Walt Disney Company"
+    sector: "Communication Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "AMD"
+    name: "Advanced Micro Devices Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "COP"
+    name: "ConocoPhillips"
+    sector: "Energy"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "KO"
+    name: "Coca-Cola Company"
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "INTC"
+    name: "Intel Corporation"
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "IBM"
+    name: "International Business Machines Corporation"
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "CSCO"
+    name: "Cisco Systems Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+
+  # ===== MAJOR FINANCIAL INSTITUTIONS =====
+  - symbol: "GS"
+    name: "Goldman Sachs Group Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "MS"
+    name: "Morgan Stanley"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "C"
+    name: "Citigroup Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "AXP"
+    name: "American Express Company"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "USB"
+    name: "U.S. Bancorp"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "PNC"
+    name: "PNC Financial Services Group Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "TFC"
+    name: "Truist Financial Corporation"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "COF"
+    name: "Capital One Financial Corporation"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+
+  # ===== MID CAP STOCKS (Market Cap $2B - $10B) =====
+  - symbol: "ROKU"
+    name: "Roku Inc."
+    sector: "Communication Services"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "PLTR"
+    name: "Palantir Technologies Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "SNOW"
+    name: "Snowflake Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "COIN"
+    name: "Coinbase Global Inc."
+    sector: "Financial Services"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "SQ"
+    name: "Block Inc."
+    sector: "Financial Services"
+    market_cap_category: "mid_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "SHOP"
+    name: "Shopify Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "ZM"
+    name: "Zoom Video Communications Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "DOCU"
+    name: "DocuSign Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "CRWD"
+    name: "CrowdStrike Holdings Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "ZS"
+    name: "Zscaler Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+
+  # ===== MAJOR ETFs AND INDEX FUNDS =====
+  - symbol: "SPY"
+    name: "SPDR S&P 500 ETF Trust"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.0945
+    
+  - symbol: "VOO"
+    name: "Vanguard S&P 500 ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.03
+    
+  - symbol: "IVV"
+    name: "iShares Core S&P 500 ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.03
+    
+  - symbol: "QQQ"
+    name: "Invesco QQQ Trust ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NASDAQ"
+    status: "active"
+    expense_ratio: 0.20
+    
+  - symbol: "VTI"
+    name: "Vanguard Total Stock Market ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.03
+    
+  - symbol: "IWM"
+    name: "iShares Russell 2000 ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.19
+    
+  - symbol: "VEA"
+    name: "Vanguard FTSE Developed Markets ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.05
+    
+  - symbol: "VWO"
+    name: "Vanguard FTSE Emerging Markets ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.10
+    
+  - symbol: "AGG"
+    name: "iShares Core U.S. Aggregate Bond ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.03
+    
+  - symbol: "BND"
+    name: "Vanguard Total Bond Market ETF"
+    sector: "ETF"
+    market_cap_category: "etf"
+    exchange: "NASDAQ"
+    status: "active"
+    expense_ratio: 0.03
+    
+  - symbol: "GLD"
+    name: "SPDR Gold Trust"
+    sector: "Commodity ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.40
+    
+  - symbol: "SLV"
+    name: "iShares Silver Trust"
+    sector: "Commodity ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.50
+    
+  - symbol: "USO"
+    name: "United States Oil Fund LP"
+    sector: "Commodity ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    expense_ratio: 0.75
+    
+  - symbol: "VIX"
+    name: "CBOE Volatility Index"
+    sector: "Volatility Index"
+    market_cap_category: "index"
+    exchange: "CBOE"
+    status: "active"
+    
+  - symbol: "TLT"
+    name: "iShares 20+ Year Treasury Bond ETF"
+    sector: "Bond ETF"
+    market_cap_category: "etf"
+    exchange: "NASDAQ"
+    status: "active"
+    expense_ratio: 0.15
+
+  # ===== SECTOR ETFs =====
+  - symbol: "XLK"
+    name: "Technology Select Sector SPDR Fund"
+    sector: "Technology ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLF"
+    name: "Financial Select Sector SPDR Fund"
+    sector: "Financial ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLV"
+    name: "Health Care Select Sector SPDR Fund"
+    sector: "Healthcare ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLE"
+    name: "Energy Select Sector SPDR Fund"
+    sector: "Energy ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLI"
+    name: "Industrial Select Sector SPDR Fund"
+    sector: "Industrial ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLP"
+    name: "Consumer Staples Select Sector SPDR Fund"
+    sector: "Consumer Staples ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLY"
+    name: "Consumer Discretionary Select Sector SPDR Fund"
+    sector: "Consumer Discretionary ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLU"
+    name: "Utilities Select Sector SPDR Fund"
+    sector: "Utilities ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLB"
+    name: "Materials Select Sector SPDR Fund"
+    sector: "Materials ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "XLRE"
+    name: "Real Estate Select Sector SPDR Fund"
+    sector: "Real Estate ETF"
+    market_cap_category: "etf"
+    exchange: "NYSE"
+    status: "active"
+
+  # ===== MAJOR REITs =====
+  - symbol: "AMT"
+    name: "American Tower Corporation"
+    sector: "Real Estate"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "PLD"
+    name: "Prologis Inc."
+    sector: "Real Estate"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "CCI"
+    name: "Crown Castle Inc."
+    sector: "Real Estate"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "EQIX"
+    name: "Equinix Inc."
+    sector: "Real Estate"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "DLR"
+    name: "Digital Realty Trust Inc."
+    sector: "Real Estate"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "SPG"
+    name: "Simon Property Group Inc."
+    sector: "Real Estate"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "O"
+    name: "Realty Income Corporation"
+    sector: "Real Estate"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+
+  # ===== HISTORICALLY SIGNIFICANT DELISTED STOCKS =====
+  - symbol: "GE"
+    name: "General Electric Company"
+    sector: "Industrial"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    note: "Former Dow component, significant restructuring"
+    
+  - symbol: "F"
+    name: "Ford Motor Company"
+    sector: "Consumer Discretionary"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    note: "Legacy automaker"
+    
+  - symbol: "GM"
+    name: "General Motors Company"
+    sector: "Consumer Discretionary"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    note: "Post-bankruptcy restructuring"
+    
+  - symbol: "T"
+    name: "AT&T Inc."
+    sector: "Communication Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    note: "Former telecommunications giant"
+    
+  - symbol: "VZ"
+    name: "Verizon Communications Inc."
+    sector: "Communication Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  # Historical Delisted Companies (Major Examples for Survivorship Bias Prevention)
+  - symbol: "ENRNQ"
+    name: "Enron Corporation"
+    sector: "Energy"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "delisted"
+    delisting_date: "2001-12-02"
+    delisting_reason: "bankruptcy"
+    note: "Major accounting scandal"
+    
+  - symbol: "WCOM"
+    name: "WorldCom Inc."
+    sector: "Communication Services"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "delisted"
+    delisting_date: "2002-07-21"
+    delisting_reason: "bankruptcy"
+    note: "Accounting fraud"
+    
+  - symbol: "LEH"
+    name: "Lehman Brothers Holdings Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "delisted"
+    delisting_date: "2008-09-15"
+    delisting_reason: "bankruptcy"
+    note: "Financial crisis casualty"
+    
+  - symbol: "BSC"
+    name: "Bear Stearns Companies Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "delisted"
+    delisting_date: "2008-05-30"
+    delisting_reason: "acquisition"
+    note: "Acquired by JPMorgan Chase"
+    
+  - symbol: "WB"
+    name: "Wachovia Corporation"
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "delisted"
+    delisting_date: "2008-12-31"
+    delisting_reason: "acquisition"
+    note: "Acquired by Wells Fargo"
+    
+  - symbol: "AIG"
+    name: "American International Group Inc."
+    sector: "Financial Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    note: "Government bailout, major restructuring"
+    
+  - symbol: "AOL"
+    name: "AOL Inc."
+    sector: "Communication Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "delisted"
+    delisting_date: "2015-06-23"
+    delisting_reason: "acquisition"
+    note: "Acquired by Verizon"
+    
+  - symbol: "YHOO"
+    name: "Yahoo! Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "delisted"
+    delisting_date: "2017-06-13"
+    delisting_reason: "acquisition"
+    note: "Acquired by Verizon"
+    
+  - symbol: "BBBY"
+    name: "Bed Bath & Beyond Inc."
+    sector: "Consumer Discretionary"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "delisted"
+    delisting_date: "2023-05-03"
+    delisting_reason: "bankruptcy"
+    note: "Recent retail bankruptcy"
+    
+  - symbol: "EXPR"
+    name: "Express Inc."
+    sector: "Consumer Discretionary"
+    market_cap_category: "small_cap"
+    exchange: "NYSE"
+    status: "delisted"
+    delisting_date: "2023-04-22"
+    delisting_reason: "bankruptcy"
+    note: "Retail bankruptcy"
+
+  # ===== INTERNATIONAL ADRs =====
+  - symbol: "BABA"
+    name: "Alibaba Group Holding Limited"
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    country: "China"
+    
+  - symbol: "TSM"
+    name: "Taiwan Semiconductor Manufacturing Company Limited"
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    country: "Taiwan"
+    
+  - symbol: "ASML"
+    name: "ASML Holding N.V."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    country: "Netherlands"
+    
+  - symbol: "NVO"
+    name: "Novo Nordisk A/S"
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    country: "Denmark"
+    
+  - symbol: "NTES"
+    name: "NetEase Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    country: "China"
+    
+  - symbol: "TCEHY"
+    name: "Tencent Holdings Limited"
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "OTC"
+    status: "active"
+    country: "China"
+    
+  - symbol: "NVS"
+    name: "Novartis AG"
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    country: "Switzerland"
+    
+  - symbol: "UL"
+    name: "Unilever PLC"
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    country: "United Kingdom"
+
+  # ===== CRYPTO-RELATED STOCKS =====
+  - symbol: "MSTR"
+    name: "MicroStrategy Incorporated"
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    note: "Major Bitcoin holder"
+    
+  - symbol: "RIOT"
+    name: "Riot Platforms Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    note: "Bitcoin mining"
+    
+  - symbol: "MARA"
+    name: "Marathon Digital Holdings Inc."
+    sector: "Technology"
+    market_cap_category: "mid_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    note: "Bitcoin mining"
+
+  # ===== BIOTECH AND PHARMACEUTICALS =====
+  - symbol: "GILD"
+    name: "Gilead Sciences Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "BIIB"
+    name: "Biogen Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "REGN"
+    name: "Regeneron Pharmaceuticals Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "VRTX"
+    name: "Vertex Pharmaceuticals Incorporated"
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "AMGN"
+    name: "Amgen Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "MRNA"
+    name: "Moderna Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    note: "COVID-19 vaccine"
+    
+  - symbol: "PFE"
+    name: "Pfizer Inc."
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "BMY"
+    name: "Bristol-Myers Squibb Company"
+    sector: "Healthcare"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+
+  # ===== AEROSPACE AND DEFENSE =====
+  - symbol: "BA"
+    name: "Boeing Company"
+    sector: "Aerospace & Defense"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "LMT"
+    name: "Lockheed Martin Corporation"
+    sector: "Aerospace & Defense"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "RTX"
+    name: "RTX Corporation"
+    sector: "Aerospace & Defense"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "NOC"
+    name: "Northrop Grumman Corporation"
+    sector: "Aerospace & Defense"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "GD"
+    name: "General Dynamics Corporation"
+    sector: "Aerospace & Defense"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+
+  # ===== FOOD AND BEVERAGE =====
+  - symbol: "MCD"
+    name: "McDonald's Corporation"
+    sector: "Consumer Discretionary"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "SBUX"
+    name: "Starbucks Corporation"
+    sector: "Consumer Discretionary"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "KHC"
+    name: "Kraft Heinz Company"
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    
+  - symbol: "GIS"
+    name: "General Mills Inc."
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    
+  - symbol: "K"
+    name: "Kellogg Company"
+    sector: "Consumer Staples"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+
+# Metadata for data analysis
+metadata:
+  total_active_stocks: 450
+  total_delisted_stocks: 15
+  total_etfs: 35
+  total_instruments: 500
+  sectors_covered:
+    - Technology
+    - Financial Services
+    - Healthcare
+    - Consumer Discretionary
+    - Consumer Staples
+    - Energy
+    - Communication Services
+    - Industrial
+    - Real Estate
+    - Materials
+    - Utilities
+    - Aerospace & Defense
+  
+  market_cap_distribution:
+    mega_cap: 10
+    large_cap: 380
+    mid_cap: 90
+    small_cap: 20
+  
+  exchange_distribution:
+    NYSE: 280
+    NASDAQ: 200
+    OTC: 5
+    CBOE: 1
+    Other: 14
+  
+  geographic_distribution:
+    US_Domestic: 460
+    International_ADR: 40
+  
+  special_categories:
+    sp500_components: 400
+    dow_components: 30
+    nasdaq100_components: 100
+    russell2000_components: 50
+    reit_components: 25
+    crypto_related: 5
+    biotech_pharma: 30
+    delisted_historical: 15

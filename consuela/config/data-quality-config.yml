@@ -1,0 +1,351 @@
+# Data Quality Validation Configuration
+# Comprehensive settings for validating all data types in the 2Trade system
+
+validation_rules:
+  # Market Data Validation Rules
+  market_data:
+    # Price validation thresholds
+    price_validation:
+      min_price: 0.01                    # Minimum valid price
+      max_daily_change: 0.50             # Maximum 50% daily price change
+      max_intraday_gap: 0.20            # Maximum 20% gap between OHLC values
+    
+    # Volume validation
+    volume_validation:
+      min_volume: 0                      # Minimum valid volume
+      max_volume_spike: 100              # Maximum volume spike (100x median)
+      min_volume_threshold: 0.01         # Minimum volume (1% of median)
+    
+    # Data completeness thresholds
+    completeness:
+      min_completeness_ratio: 0.80       # Minimum 80% of expected trading days
+      max_gap_days: 10                   # Maximum consecutive missing days
+      freshness_threshold_days: 7        # Data should be updated within 7 days
+    
+    # Quality score weights
+    quality_weights:
+      null_percentage: 0.25              # Weight for null value penalty
+      price_errors: 0.30                 # Weight for price relationship errors
+      completeness: 0.25                 # Weight for data completeness
+      freshness: 0.20                    # Weight for data freshness
+    
+    # Required columns for market data
+    required_columns:
+      - "open"
+      - "high" 
+      - "low"
+      - "close"
+      - "volume"
+    
+    # Optional technical indicator columns
+    optional_columns:
+      - "sma_20"
+      - "sma_50"
+      - "ema_12"
+      - "ema_26"
+      - "rsi"
+      - "macd"
+      - "bollinger_upper"
+      - "bollinger_lower"
+      - "atr"
+      - "vwap"
+
+  # Economic Data Validation Rules  
+  economic_data:
+    # Data freshness by frequency
+    freshness_thresholds:
+      "Daily": 7                         # Daily indicators: 7 days
+      "Weekly": 14                       # Weekly indicators: 14 days  
+      "Monthly": 45                      # Monthly indicators: 45 days
+      "Quarterly": 120                   # Quarterly indicators: 120 days
+      "Annual": 400                      # Annual indicators: 400 days
+    
+    # Null value thresholds
+    null_thresholds:
+      max_null_percentage: 15            # Maximum 15% null values
+      high_null_threshold: 25            # High concern threshold
+    
+    # Required metadata fields
+    required_metadata:
+      - "category"
+      - "frequency"
+      - "importance"
+      - "units"
+    
+    # Quality checks
+    quality_checks:
+      check_extreme_values: true         # Check for extreme outliers
+      outlier_multiplier: 10             # Values 10x beyond IQR considered extreme
+      min_data_points: 10                # Minimum data points for analysis
+    
+    # Priority indicators (critical economic data)
+    priority_indicators:
+      - "UNRATE"      # Unemployment Rate
+      - "FEDFUNDS"    # Federal Funds Rate
+      - "CPIAUCSL"    # Consumer Price Index
+      - "GDP"         # Gross Domestic Product
+      - "PAYEMS"      # Nonfarm Payrolls
+      - "VIXCLS"      # VIX Volatility Index
+      - "DGS10"       # 10-Year Treasury Rate
+
+  # News Data Validation Rules
+  news_data:
+    # Article quality thresholds
+    article_quality:
+      min_headline_length: 10            # Minimum headline length
+      max_headline_length: 200           # Maximum headline length  
+      min_summary_length: 20             # Minimum summary length
+      required_fields:
+        - "date"
+        - "symbol" 
+        - "headline"
+        - "source"
+        - "sentiment_score"
+        - "sentiment_label"
+    
+    # Dummy data detection patterns
+    dummy_data_patterns:
+      dummy_sources:
+        - "sample_news_generator"
+        - "test_source"
+        - "dummy_source"
+      dummy_headline_patterns:
+        - "Sample news headline"
+        - "Test headline"
+        - "Dummy news"
+        - "Example article"
+    
+    # Sentiment validation
+    sentiment_validation:
+      valid_sentiment_labels:
+        - "positive"
+        - "negative" 
+        - "neutral"
+      sentiment_score_range:
+        min: -1.0
+        max: 1.0
+    
+    # Source quality requirements
+    source_quality:
+      trusted_sources:
+        - "Yahoo"
+        - "Reuters"
+        - "Bloomberg" 
+        - "MarketWatch"
+        - "SeekingAlpha"
+        - "CNN Business"
+        - "CNBC"
+        - "Financial Times"
+      min_articles_per_symbol: 5         # Minimum articles per symbol
+      max_dummy_percentage: 5            # Maximum 5% dummy articles allowed
+    
+    # Date validation
+    date_validation:
+      max_future_days: 1                 # Max 1 day in future
+      min_historical_days: 3650          # Accept articles up to 10 years old
+
+  # Trends Data Validation Rules
+  trends_data:
+    # Search interest validation
+    search_interest:
+      valid_score_range:
+        min: 0
+        max: 100
+      min_data_points: 10                # Minimum search interest data points
+      required_fields:
+        - "date"
+        - "search_score"
+    
+    # Metadata requirements
+    required_metadata:
+      - "keyword"
+      - "geo"                           # Geographic region
+      - "timeframe"                     # Time period covered
+      - "category"                      # Search category
+    
+    # Related queries validation
+    related_queries:
+      min_related_queries: 5            # Minimum related queries
+      max_related_queries: 100          # Maximum related queries
+      required_types:
+        - "top"                         # Top related queries
+        - "rising"                      # Rising related queries
+    
+    # File structure validation
+    file_structure:
+      required_sections:
+        - "search_interest"
+        - "metadata" 
+      optional_sections:
+        - "related_queries"
+        - "geo_distribution"
+    
+    # Enhanced trend categories
+    trend_categories:
+      - "financial_stocks"
+      - "financial_sectors" 
+      - "trade_tariffs"
+      - "economic_indicators"
+      - "supply_chain"
+      - "global_trade_policy"
+      - "commodity_trends"
+      - "crypto_finance"
+      - "geopolitical_trade"
+    
+    # Data freshness by category
+    freshness_thresholds:
+      "financial_stocks": 7            # Stock trends should be recent
+      "trade_tariffs": 30             # Policy trends can be older
+      "economic_indicators": 14       # Economic data moderately fresh
+      "supply_chain": 21              # Supply chain trends
+      "default": 14                   # Default for other categories
+
+  # Earnings Data Validation Rules
+  earnings_data:
+    # Calendar data validation
+    earnings_calendar:
+      required_fields:
+        - "symbol"
+        - "date"
+        - "quarter"
+        - "year"
+      optional_fields:
+        - "hour"                        # Time of earnings call
+        - "epsEstimate"
+        - "epsActual"
+        - "revenueEstimate"
+        - "revenueActual"
+    
+    # Historical earnings validation
+    earnings_history:
+      min_quarters: 4                   # Minimum quarterly data points
+      max_quarters: 40                  # Maximum quarters to retain
+      required_fields:
+        - "fiscalDateEnding"
+        - "reportedEPS"
+      quality_checks:
+        check_eps_consistency: true     # Check for unusual EPS changes
+        max_eps_change: 500             # Maximum % EPS change between quarters
+    
+    # Earnings estimates validation
+    earnings_estimates:
+      required_fields:
+        - "symbol"
+        - "estimates"
+        - "timestamp"
+      estimate_fields:
+        - "period"
+        - "estimate"
+        - "actual"
+      freshness_threshold_days: 90      # Estimates should be recent
+    
+    # Earnings surprises validation
+    earnings_surprises:
+      min_surprise_threshold: 0.05      # 5% minimum surprise
+      max_surprise_threshold: 200       # 200% maximum surprise
+      required_fields:
+        - "actual"
+        - "estimate"
+        - "surprise"
+        - "surprise_percent"
+    
+    # Data sources validation
+    trusted_sources:
+      - "finnhub"
+      - "alpha_vantage"
+      - "polygon"
+      - "yahoofinance"
+      - "quandl"
+    
+    # File naming conventions
+    file_patterns:
+      calendar: "earnings_calendar_*.json"
+      history: "*_earnings.json"
+      estimates: "*_estimates.json"
+      upcoming: "upcoming_earnings_*.json"
+
+# Quality Score Calculation
+quality_scoring:
+  # Overall quality score ranges
+  score_ranges:
+    excellent: 95                       # 95-100: Excellent quality
+    good: 80                           # 80-94: Good quality  
+    acceptable: 60                     # 60-79: Acceptable quality
+    poor: 40                          # 40-59: Poor quality
+    critical: 0                       # 0-39: Critical issues
+
+  # Penalty weights by severity
+  penalty_weights:
+    critical: 25                      # 25 point penalty for critical issues
+    high: 15                         # 15 point penalty for high severity
+    medium: 8                        # 8 point penalty for medium severity  
+    low: 3                          # 3 point penalty for low severity
+
+# Reporting Configuration
+reporting:
+  # Report output formats
+  output_formats:
+    - "json"                          # Detailed JSON report
+    - "txt"                           # Human-readable summary
+    - "csv"                           # CSV export for analysis
+  
+  # Report sections to include
+  sections:
+    summary: true                     # Executive summary
+    detailed_metrics: true            # Detailed quality metrics
+    recommendations: true             # Actionable recommendations
+    trend_analysis: true              # Quality trends over time
+  
+  # Alert thresholds
+  alerts:
+    critical_quality_threshold: 40    # Alert if quality score below 40
+    high_issue_count: 10             # Alert if more than 10 high-severity issues
+    missing_data_threshold: 30       # Alert if >30% data missing
+  
+  # Historical comparison
+  historical_tracking:
+    enabled: true                     # Track quality metrics over time
+    retention_days: 365              # Keep historical data for 1 year
+    comparison_periods:
+      - 7                            # Compare with 7 days ago
+      - 30                           # Compare with 30 days ago
+      - 90                           # Compare with 90 days ago
+
+# Performance Optimization
+performance:
+  # Sampling for large datasets
+  sampling:
+    max_instruments_sample: 50        # Sample max 50 instruments for detailed analysis
+    max_files_per_type: 100          # Sample max 100 files per data type
+    quick_mode_sample: 20            # Quick mode: sample 20 instruments
+  
+  # Parallel processing
+  parallel_processing:
+    enabled: true                     # Enable parallel processing
+    max_workers: 4                   # Maximum worker threads
+  
+  # Caching
+  caching:
+    enabled: true                     # Enable result caching
+    cache_duration_hours: 6          # Cache results for 6 hours
+
+# Data Type Priority
+evaluation_priority:
+  # Order of evaluation (1 = highest priority)
+  1: "market_data"                   # Market data is most critical
+  2: "economic_data"                 # Economic indicators second
+  3: "earnings_data"                 # Earnings data third
+  4: "news_data"                     # News data fourth
+  5: "trends_data"                   # Trends data fifth priority
+
+# Integration Settings
+integration:
+  # Odin's Eye integration
+  odins_eye:
+    auto_detect_data_root: true      # Auto-detect data root from Odin's Eye
+    use_filters: true                # Use Odin's Eye filters for data access
+  
+  # External validation services
+  external_validation:
+    enabled: false                   # Enable external API validation
+    rate_limit_ms: 1000             # Rate limit between API calls

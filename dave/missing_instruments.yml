@@ -1,0 +1,355 @@
+# Missing Instruments from Favorites and Popular Lists
+# These instruments should be added to base-list-all.yml
+
+missing_instruments:
+  - symbol: "AGG"
+    name: "iShares Core U.S. Aggregate Bond ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "ARKK"
+    name: "ARK Innovation ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "BITO"
+    name: "ProShares Bitcoin Strategy ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "CANE"
+    name: "Teucrium Sugar Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "CORN"
+    name: "Teucrium Corn Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "DBA"
+    name: "Invesco DB Agriculture Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "DBC"
+    name: "Invesco DB Commodity Index Tracking Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "EEM"
+    name: "iShares MSCI Emerging Markets ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "EFA"
+    name: "iShares MSCI EAFE ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "GLD"
+    name: "SPDR Gold Shares"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "GSG"
+    name: "iShares S&P GSCI Commodity-Indexed Trust"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "HYG"
+    name: "iShares iBoxx $ High Yield Corporate Bond ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "IWM"
+    name: "iShares Russell 2000 ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "JO"
+    name: "iPath Bloomberg Coffee Subindex Total Return ETN"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "LQD"
+    name: "iShares iBoxx $ Investment Grade Corporate Bond ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "NIB"
+    name: "iPath Bloomberg Cocoa Subindex Total Return ETN"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "PALL"
+    name: "abrdn Physical Palladium Shares ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "PDBC"
+    name: "Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "PPLT"
+    name: "abrdn Physical Platinum Shares ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "QQQ"
+    name: "Invesco QQQ Trust"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "SLV"
+    name: "iShares Silver Trust"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "SOYB"
+    name: "Teucrium Soybean Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "SPY"
+    name: "SPDR S&P 500 ETF Trust"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "SQ"
+    name: "Block Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "TLT"
+    name: "iShares 20+ Year Treasury Bond ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "TWTR"
+    name: "Twitter Inc."
+    sector: "Communication Services"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "UNG"
+    name: "United States Natural Gas Fund LP"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "USO"
+    name: "United States Oil Fund LP"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "VEA"
+    name: "Vanguard FTSE Developed Markets ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "VNQ"
+    name: "Vanguard Real Estate ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "VOO"
+    name: "Vanguard S&P 500 ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "VTI"
+    name: "Vanguard Total Stock Market ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "VWO"
+    name: "Vanguard FTSE Emerging Markets ETF"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "WEAT"
+    name: "Teucrium Wheat Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLE"
+    name: "Energy Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLF"
+    name: "Financial Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLI"
+    name: "Industrial Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLK"
+    name: "Technology Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLP"
+    name: "Consumer Staples Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLRE"
+    name: "Real Estate Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLU"
+    name: "Utilities Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLV"
+    name: "Health Care Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "XLY"
+    name: "Consumer Discretionary Select Sector SPDR Fund"
+    sector: "Unknown"
+    market_cap_category: "large_cap"
+    exchange: "NYSE"
+    status: "active"
+    source_lists: ['popular']
+
+  - symbol: "ZOOM"
+    name: "Zoom Video Communications Inc."
+    sector: "Technology"
+    market_cap_category: "large_cap"
+    exchange: "NASDAQ"
+    status: "active"
+    source_lists: ['popular']

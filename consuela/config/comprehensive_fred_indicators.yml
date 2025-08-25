@@ -1,0 +1,404 @@
+# Comprehensive FRED Economic Indicators for Trading
+# This file contains an extensive list of key economic indicators
+# organized by category and importance for financial markets
+#
+# Total: 100+ indicators across major economic categories
+# Source: Federal Reserve Economic Data (FRED)
+# Updated: 2025-08-24
+
+# Employment & Labor Market (High Impact)
+employment:
+  high_importance:
+    - symbol: "UNRATE"
+      name: "Unemployment Rate"
+      frequency: "monthly"
+      description: "Civilian unemployment rate, seasonally adjusted"
+    
+    - symbol: "PAYEMS"
+      name: "Total Nonfarm Payrolls"
+      frequency: "monthly"
+      description: "All employees, thousands of persons, seasonally adjusted"
+    
+    - symbol: "CIVPART"
+      name: "Labor Force Participation Rate"
+      frequency: "monthly"
+      description: "Civilian labor force participation rate"
+    
+    - symbol: "AHETPI"
+      name: "Average Hourly Earnings"
+      frequency: "monthly"
+      description: "Average hourly earnings of production and nonsupervisory employees"
+    
+    - symbol: "ICSA"
+      name: "Initial Claims"
+      frequency: "weekly"
+      description: "Initial claims for unemployment insurance"
+  
+  medium_importance:
+    - symbol: "EMRATIO"
+      name: "Employment-Population Ratio"
+      frequency: "monthly"
+    
+    - symbol: "U6RATE"
+      name: "Total Unemployed Plus Marginally Attached"
+      frequency: "monthly"
+    
+    - symbol: "UEMPMED"
+      name: "Median Duration of Unemployment"
+      frequency: "monthly"
+
+# Inflation & Prices (High Impact)
+inflation:
+  high_importance:
+    - symbol: "CPIAUCSL"
+      name: "Consumer Price Index"
+      frequency: "monthly"
+      description: "Consumer Price Index for All Urban Consumers: All Items"
+    
+    - symbol: "CPILFESL"
+      name: "Core CPI"
+      frequency: "monthly"
+      description: "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy"
+    
+    - symbol: "PCEPI"
+      name: "PCE Price Index"
+      frequency: "monthly"
+      description: "Personal Consumption Expenditures: Chain-type Price Index"
+    
+    - symbol: "PCEPILFE"
+      name: "Core PCE Price Index"
+      frequency: "monthly"
+      description: "Personal Consumption Expenditures Excluding Food and Energy"
+    
+    - symbol: "PPIFIS"
+      name: "Producer Price Index"
+      frequency: "monthly"
+      description: "Producer Price Index for Final Demand"
+  
+  medium_importance:
+    - symbol: "CPIMEDSL"
+      name: "Median CPI"
+      frequency: "monthly"
+    
+    - symbol: "CPITRNSL"
+      name: "Trimmed Mean CPI"
+      frequency: "monthly"
+    
+    - symbol: "T5YIE"
+      name: "5-Year Breakeven Inflation Rate"
+      frequency: "daily"
+
+# Interest Rates & Monetary Policy (High Impact)
+interest_rates:
+  high_importance:
+    - symbol: "FEDFUNDS"
+      name: "Federal Funds Rate"
+      frequency: "monthly"
+      description: "Effective federal funds rate"
+    
+    - symbol: "DFF"
+      name: "Federal Funds Rate (Daily)"
+      frequency: "daily"
+      description: "Effective federal funds rate, daily"
+    
+    - symbol: "DGS10"
+      name: "10-Year Treasury Rate"
+      frequency: "daily"
+      description: "10-Year Treasury Constant Maturity Rate"
+    
+    - symbol: "DGS2"
+      name: "2-Year Treasury Rate"
+      frequency: "daily"
+      description: "2-Year Treasury Constant Maturity Rate"
+    
+    - symbol: "DGS1MO"
+      name: "1-Month Treasury Rate"
+      frequency: "daily"
+    
+    - symbol: "DGS3MO"
+      name: "3-Month Treasury Rate"
+      frequency: "daily"
+    
+    - symbol: "DGS5"
+      name: "5-Year Treasury Rate"
+      frequency: "daily"
+    
+    - symbol: "DGS30"
+      name: "30-Year Treasury Rate"
+      frequency: "daily"
+  
+  medium_importance:
+    - symbol: "MORTGAGE15US"
+      name: "15-Year Fixed Rate Mortgage"
+      frequency: "weekly"
+    
+    - symbol: "MORTGAGE30US"
+      name: "30-Year Fixed Rate Mortgage"
+      frequency: "weekly"
+    
+    - symbol: "DPRIME"
+      name: "Bank Prime Loan Rate"
+      frequency: "daily"
+
+# Economic Growth & GDP (High Impact)
+growth:
+  high_importance:
+    - symbol: "GDP"
+      name: "Gross Domestic Product"
+      frequency: "quarterly"
+      description: "Gross Domestic Product, seasonally adjusted annual rate"
+    
+    - symbol: "GDPC1"
+      name: "Real GDP"
+      frequency: "quarterly"
+      description: "Real Gross Domestic Product"
+    
+    - symbol: "GDPPOT"
+      name: "Real Potential GDP"
+      frequency: "quarterly"
+      description: "Real Potential Gross Domestic Product"
+    
+    - symbol: "NYGDPMKTPCDWLD"
+      name: "GDP per Capita"
+      frequency: "annual"
+      description: "GDP per capita, current US$"
+  
+  medium_importance:
+    - symbol: "GDPDEF"
+      name: "GDP Deflator"
+      frequency: "quarterly"
+    
+    - symbol: "A191RL1Q225SBEA"
+      name: "Real GDP Growth Rate"
+      frequency: "quarterly"
+
+# Industrial Production & Manufacturing (Medium-High Impact)
+industrial:
+  high_importance:
+    - symbol: "INDPRO"
+      name: "Industrial Production Index"
+      frequency: "monthly"
+      description: "Industrial Production: Total Index"
+    
+    - symbol: "CAPUTLB50001SQ"
+      name: "Capacity Utilization"
+      frequency: "monthly"
+      description: "Capacity Utilization: Total Industry"
+    
+    - symbol: "NAPM"
+      name: "ISM Manufacturing PMI"
+      frequency: "monthly"
+      description: "ISM Manufacturing: PMI Composite Index"
+    
+    - symbol: "MANEMP"
+      name: "Manufacturing Employment"
+      frequency: "monthly"
+      description: "All Employees, Manufacturing"
+  
+  medium_importance:
+    - symbol: "NEWORDER"
+      name: "New Orders for Manufactured Goods"
+      frequency: "monthly"
+    
+    - symbol: "NAPMNEWO"
+      name: "ISM Manufacturing: New Orders Index"
+      frequency: "monthly"
+
+# Consumer Spending & Retail (High Impact)
+consumer:
+  high_importance:
+    - symbol: "PCE"
+      name: "Personal Consumption Expenditures"
+      frequency: "monthly"
+      description: "Personal Consumption Expenditures"
+    
+    - symbol: "PCEDG"
+      name: "PCE: Durable Goods"
+      frequency: "monthly"
+    
+    - symbol: "RRSFS"
+      name: "Retail Sales"
+      frequency: "monthly"
+      description: "Advance Retail Sales: Retail Trade"
+    
+    - symbol: "RSAFS"
+      name: "Retail Sales (Seasonally Adjusted)"
+      frequency: "monthly"
+    
+    - symbol: "UMCSENT"
+      name: "University of Michigan Consumer Sentiment"
+      frequency: "monthly"
+      description: "University of Michigan: Consumer Sentiment"
+  
+  medium_importance:
+    - symbol: "CONFINVEST"
+      name: "Consumer Confidence Index"
+      frequency: "monthly"
+    
+    - symbol: "PSAVERT"
+      name: "Personal Saving Rate"
+      frequency: "monthly"
+
+# Housing Market (High Impact)
+housing:
+  high_importance:
+    - symbol: "HOUST"
+      name: "Housing Starts"
+      frequency: "monthly"
+      description: "Housing Starts: Total: New Privately Owned Housing Units Started"
+    
+    - symbol: "PERMIT"
+      name: "Building Permits"
+      frequency: "monthly"
+      description: "New Private Housing Units Authorized by Building Permits"
+    
+    - symbol: "EXHOSLUSM495S"
+      name: "Existing Home Sales"
+      frequency: "monthly"
+      description: "Existing Home Sales"
+    
+    - symbol: "MSPUS"
+      name: "Median Sales Price"
+      frequency: "quarterly"
+      description: "Median Sales Price of Houses Sold for the United States"
+  
+  medium_importance:
+    - symbol: "CSUSHPINSA"
+      name: "Case-Shiller Home Price Index"
+      frequency: "monthly"
+    
+    - symbol: "RECON"
+      name: "Construction Spending"
+      frequency: "monthly"
+
+# Financial Markets & Risk (High Impact)
+markets:
+  high_importance:
+    - symbol: "VIXCLS"
+      name: "VIX Volatility Index"
+      frequency: "daily"
+      description: "CBOE Volatility Index: VIX"
+    
+    - symbol: "DEXUSEU"
+      name: "US/Euro Exchange Rate"
+      frequency: "daily"
+      description: "U.S. / Euro Foreign Exchange Rate"
+    
+    - symbol: "DTWEXBGS"
+      name: "Trade Weighted US Dollar Index"
+      frequency: "daily"
+      description: "Trade Weighted U.S. Dollar Index: Broad, Goods and Services"
+    
+    - symbol: "DEXJPUS"
+      name: "Japan/US Exchange Rate"
+      frequency: "daily"
+      description: "Japan / U.S. Foreign Exchange Rate"
+    
+    - symbol: "DEXCHUS"
+      name: "China/US Exchange Rate"
+      frequency: "daily"
+      description: "China / U.S. Foreign Exchange Rate"
+  
+  medium_importance:
+    - symbol: "DEXCAUS"
+      name: "Canada/US Exchange Rate"
+      frequency: "daily"
+    
+    - symbol: "DEXUSUK"
+      name: "US/UK Exchange Rate"
+      frequency: "daily"
+
+# Commodities & Energy (Medium-High Impact)
+commodities:
+  high_importance:
+    - symbol: "DCOILWTICO"
+      name: "WTI Crude Oil Price"
+      frequency: "daily"
+      description: "Crude Oil Prices: West Texas Intermediate"
+    
+    - symbol: "WPU10170301"
+      name: "Gold Price Index"
+      frequency: "monthly"
+      description: "Producer Price Index by Commodity for Metals and Metal Products: Gold Ores"
+    
+    - symbol: "DHHNGSP"
+      name: "Natural Gas Price"
+      frequency: "daily"
+      description: "Henry Hub Natural Gas Spot Price"
+  
+  medium_importance:
+    - symbol: "DCOILBRENTEU"
+      name: "Brent Crude Oil Price"
+      frequency: "daily"
+    
+    - symbol: "PWHEAMTUSDM"
+      name: "Global Wheat Price"
+      frequency: "monthly"
+    
+    - symbol: "PMAIZMTUSDM"
+      name: "Global Corn Price"
+      frequency: "monthly"
+
+# International Trade (Medium Impact)
+trade:
+  high_importance:
+    - symbol: "BOPGSTB"
+      name: "Trade Balance"
+      frequency: "monthly"
+      description: "Trade Balance: Goods and Services, Balance of Payments Basis"
+    
+    - symbol: "EXPGS"
+      name: "Exports of Goods and Services"
+      frequency: "monthly"
+      description: "Exports of Goods and Services"
+    
+    - symbol: "IMPGS"
+      name: "Imports of Goods and Services"
+      frequency: "monthly"
+      description: "Imports of Goods and Services"
+  
+  medium_importance:
+    - symbol: "XTEXVA01USM664S"
+      name: "Exports Value Index"
+      frequency: "monthly"
+    
+    - symbol: "XTIMVA01USM664S"
+      name: "Imports Value Index"
+      frequency: "monthly"
+
+# Government & Fiscal Policy (Medium Impact)
+government:
+  high_importance:
+    - symbol: "GFDEBTN"
+      name: "Federal Debt Total"
+      frequency: "quarterly"
+      description: "Federal Debt: Total Public Debt"
+    
+    - symbol: "FYFSD"
+      name: "Federal Surplus or Deficit"
+      frequency: "annual"
+      description: "Federal Surplus or Deficit"
+  
+  medium_importance:
+    - symbol: "FGRECPT"
+      name: "Federal Government Receipts"
+      frequency: "quarterly"
+    
+    - symbol: "FGEXPND"
+      name: "Federal Government Expenditures"
+      frequency: "quarterly"
+
+# Regional Economic Data (Lower Priority)
+regional:
+  low_importance:
+    - symbol: "NYICLAIMS"
+      name: "New York Initial Claims"
+      frequency: "weekly"
+    
+    - symbol: "CAICLAIMS"
+      name: "California Initial Claims"
+      frequency: "weekly"
+    
+    - symbol: "TXICLAIMS"
+      name: "Texas Initial Claims"
+      frequency: "weekly"

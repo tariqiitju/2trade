@@ -1,0 +1,33 @@
+news to feature parsing model
+
+Missing Data for the 8-Stage Pipeline:
+
+  Stage 0-1 (Mostly Available):
+
+  - ✅ Adjusted prices (you have this)
+  - ❌ Corporate Actions Data: Split/dividend adjustment details
+  - ❌ Trading Calendar: Common trading calendar alignment
+  - ❌ Free Float Data: For turnover calculations
+
+  Stage 2 (Benchmark Data):
+
+  - ❌ Benchmark/Index Data: Market indices (S&P 500, sector indices) for beta calculations
+  - ❌ Sector Classifications: GICS/ICB sector mappings for cross-sectional ranking
+
+  Stage 4 (Advanced Analytics):
+
+  - ❌ Bid-Ask Spread Data: For microstructure analysis (Roll spread estimation)
+  - ❌ Intraday Data: For high-frequency lead-lag analysis
+
+  Stage 6 (Enhanced Alternative Data):
+
+  - ❌ Social Media Data: Twitter/Reddit mentions and sentiment
+  - ❌ Company Fundamentals: Earnings, revenue, valuation ratios
+  - ❌ Economic Surprises: Consensus vs actual for macro releases
+  - ❌ Options Data: VIX and implied volatility metrics
+  - ❌ Earnings Calendar: Announcement dates and guidance
+
+  Stage 7 (Target Engineering):
+
+  - ❌ Delisting Data: For survivorship bias handling
+  - ❌ Corporate Action Dates: For event-driven features

@@ -1,0 +1,13 @@
+1. corporate calendar
+2. sec filing lawsuit
+3. earning report
+
+
+___________________
+
+use which data is not being used (alternate fin data)
+
+fmp - 33fErKzhXSYZLtK1qBywGPzNFvItIJHT
+finnhub - d2ljlrpr01qr27gjjjq0d2ljlrpr01qr27gjjjqg
+eodhd -  68ab3b61b5e512.83203949
+alpha vantage: YK4L6RMER1743Z67

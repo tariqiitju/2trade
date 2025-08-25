@@ -1,0 +1,93 @@
+# Odin's Eye Test Configuration
+# Configuration for testing the Odin's Eye library
+
+test_config:
+  # Test Data Settings
+  data_root: "W:/market-data"  # Override with --data-root argument
+  
+  # Test Execution Settings
+  quick_mode: false           # Run subset of tests for quick validation
+  verbose: false             # Detailed output
+  timeout_seconds: 300       # Max time per test suite
+  
+  # Test Symbols Configuration
+  test_symbols:
+    # Number of symbols to use for each test type
+    max_stocks: 10
+    max_etfs: 5
+    max_commodities: 3
+    
+    # Specific symbols for targeted tests (if available)
+    priority_symbols:
+      stocks: ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
+      etfs: ["SPY", "QQQ", "VOO", "VTI", "IWM"]
+      commodities: ["GLD", "SLV", "USO"]
+    
+    # Fallback symbols if priority symbols not available
+    fallback_symbols:
+      stocks: ["IBM", "INTC", "AMD", "NVDA", "ORCL"]
+      etfs: ["EFA", "EEM", "AGG", "TLT", "VNQ"]
+  
+  # Date Range Settings
+  date_ranges:
+    recent_days: 30           # Recent data test
+    year_back: 365           # One year back test
+    specific_year: "2023"    # Specific year test
+    long_term_years: 5       # Long-term historical test
+  
+  # Economic Indicators for Testing
+  economic_indicators:
+    primary: ["UNRATE", "DGS10", "VIXCLS", "GDP"]
+    secondary: ["PAYEMS", "CPIAUCSL", "FEDFUNDS", "HOUST"]
+    
+  # News Data Testing
+  news_config:
+    sentiment_labels: ["positive", "negative", "neutral"]
+    test_sources: ["Reuters", "Bloomberg", "MarketWatch", "Yahoo Finance"]
+    min_articles: 1          # Minimum articles expected
+    
+  # Trends Data Testing  
+  trends_config:
+    test_keywords: ["stock market", "recession", "inflation", "AI", "bitcoin"]
+    geo_regions: ["US", "GB", "DE", "JP"]
+    min_search_interest: 1
+  
+  # Performance Benchmarks
+  performance:
+    max_query_time_seconds: 30
+    max_data_load_time_seconds: 60
+    memory_limit_mb: 1000
+  
+  # Data Quality Checks
+  data_quality:
+    min_records_daily: 100      # Minimum daily records for popular symbols
+    max_price_deviation: 0.5    # Maximum daily price change (50%)
+    required_columns:
+      market_data: ["date", "open", "high", "low", "close", "volume", "symbol"]
+      economic_data: ["date", "value", "symbol"]
+  
+  # Test Categories
+  test_categories:
+    basic: true               # Basic initialization and configuration
+    market_data: true         # Market data access tests
+    economic_data: true       # Economic data access tests  
+    news_data: false          # News data tests (may not have data)
+    trends_data: false        # Trends data tests (may not have data)
+    filtering: true           # Date and filter tests
+    custom_queries: true      # Custom query tests
+    utilities: true           # Utility function tests
+    error_handling: true      # Error handling tests
+    performance: false        # Performance benchmark tests
+  
+  # Output Settings
+  output:
+    save_results: true        # Save test results to file
+    results_file: "test_results.json"
+    detailed_logs: false      # Save detailed logs
+    screenshot_failures: false # Screenshot on GUI test failures (if applicable)
+  
+  # Retry Settings
+  retry:
+    enabled: true
+    max_attempts: 3
+    delay_seconds: 1

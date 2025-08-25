@@ -1,0 +1,95 @@
+# Training configurations for different scenarios
+
+# Quick development training
+quick_train:
+  train_test_split: 0.8
+  validation_split: 0.2
+  cross_validation_folds: 3
+  random_state: 42
+  optimization_method: "none"
+  early_stopping: false
+  verbose: true
+  save_model: true
+  n_jobs: -1
+  gpu_enabled: false
+
+# Standard training with basic optimization
+standard_train:
+  train_test_split: 0.8
+  validation_split: 0.2
+  cross_validation_folds: 5
+  random_state: 42
+  optimization_method: "random_search"
+  optimization_trials: 50
+  optimization_timeout: 300  # 5 minutes
+  early_stopping: true
+  early_stopping_rounds: 10
+  early_stopping_metric: "rmse"
+  verbose: true
+  save_model: true
+  n_jobs: -1
+  gpu_enabled: false
+
+# Advanced training with extensive optimization
+advanced_train:
+  train_test_split: 0.8
+  validation_split: 0.2
+  cross_validation_folds: 10
+  random_state: 42
+  optimization_method: "bayesian"
+  optimization_trials: 200
+  optimization_timeout: 1800  # 30 minutes
+  early_stopping: true
+  early_stopping_rounds: 20
+  early_stopping_metric: "rmse"
+  verbose: true
+  save_model: true
+  n_jobs: -1
+  gpu_enabled: true
+
+# Production training
+production_train:
+  train_test_split: 0.9
+  validation_split: 0.1
+  cross_validation_folds: 10
+  random_state: 42
+  optimization_method: "optuna"
+  optimization_trials: 500
+  optimization_timeout: 3600  # 1 hour
+  early_stopping: true
+  early_stopping_rounds: 50
+  early_stopping_metric: "rmse"
+  verbose: false
+  save_model: true
+  model_save_path: "./production_models"
+  n_jobs: -1
+  gpu_enabled: true
+
+# Time series specific training
+time_series_train:
+  train_test_split: 0.8
+  validation_split: 0.2
+  cross_validation_folds: 5
+  random_state: 42
+  optimization_method: "random_search"
+  optimization_trials: 100
+  early_stopping: true
+  early_stopping_rounds: 15
+  early_stopping_metric: "mae"
+  verbose: true
+  save_model: true
+  n_jobs: -1
+  gpu_enabled: false
+
+# Clustering/Unsupervised training
+unsupervised_train:
+  train_test_split: 1.0  # No split for unsupervised
+  validation_split: 0.0
+  cross_validation_folds: 0
+  random_state: 42
+  optimization_method: "grid_search"
+  optimization_trials: 50
+  verbose: true
+  save_model: true
+  n_jobs: -1
+  gpu_enabled: false

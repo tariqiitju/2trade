@@ -1,0 +1,178 @@
+# Corporate Data Sources Configuration for 2Trade System
+# This file contains data sources for earnings, SEC filings, corporate actions, and other financial data
+#
+# Created: 2025-08-24
+
+# SEC EDGAR API (Official - Free)
+sec_edgar:
+  base_url: "https://data.sec.gov"
+  description: "Official SEC EDGAR API for filings, company facts, and insider transactions"
+  rate_limit: "10 requests/second"
+  endpoints:
+    company_facts: "/api/xbrl/companyfacts/CIK{cik}.json"
+    company_concept: "/api/xbrl/companyfilings/CIK{cik}.json"
+    submissions: "/api/xbrl/submissions/CIK{cik}.json"
+    frames: "/api/xbrl/frames/us-gaap/{tag}/USD/CY{year}.json"
+  headers:
+    User-Agent: "2Trade System contact@youremail.com"  # SEC requires User-Agent
+  data_types:
+    - sec_filings
+    - insider_transactions
+    - company_facts
+    - financial_statements
+
+# Financial Modeling Prep (Free tier: 250 requests/day)
+fmp:
+  base_url: "https://financialmodelingprep.com/api/v3"
+  description: "Financial Modeling Prep API for earnings, corporate actions, and insider trading"
+  rate_limit: "250 requests/day (free tier)"
+  endpoints:
+    earnings_calendar: "/earning_calendar"
+    earnings_historical: "/historical/earning_calendar/{symbol}"
+    insider_trading: "/insider-trading"
+    insider_trading_rss: "/insider-trading-rss-feed"
+    stock_dividend: "/historical-price-full/stock_dividend/{symbol}"
+    stock_split: "/historical-price-full/stock_split/{symbol}"
+    company_outlook: "/company-outlook"
+  data_types:
+    - earnings_calendar
+    - insider_trading
+    - corporate_actions
+    - dividends
+    - stock_splits
+
+# Finnhub (Free tier: 60 calls/minute)
+finnhub:
+  base_url: "https://finnhub.io/api/v1"
+  description: "Finnhub API for earnings calendar and corporate actions"
+  rate_limit: "60 calls/minute (free tier)"
+  endpoints:
+    earnings_calendar: "/calendar/earnings"
+    company_news: "/company-news"
+    insider_transactions: "/stock/insider-transactions"
+    recommendation: "/stock/recommendation"
+    price_target: "/stock/price-target"
+    upgrade_downgrade: "/stock/upgrade-downgrade"
+  data_types:
+    - earnings_calendar
+    - company_news
+    - insider_transactions
+    - analyst_ratings
+    - price_targets
+
+# EODHD (Free tier: 20 requests/day)
+eodhd:
+  base_url: "https://eodhd.com/api"
+  description: "EODHD API for calendar events and fundamental data"
+  rate_limit: "20 requests/day (free tier)"
+  endpoints:
+    earnings_calendar: "/calendar/earnings"
+    ipos_calendar: "/calendar/ipos"
+    splits_calendar: "/calendar/splits"
+    insider_transactions: "/insider-transactions"
+  data_types:
+    - earnings_calendar
+    - ipos
+    - stock_splits
+    - insider_transactions
+
+# Alpha Vantage (Free tier: 25 requests/day)
+alpha_vantage:
+  base_url: "https://www.alphavantage.co/query"
+  description: "Alpha Vantage API for earnings and fundamental data"
+  rate_limit: "25 requests/day (free tier)"
+  endpoints:
+    earnings: "?function=EARNINGS&symbol={symbol}&apikey={api_key}"
+    company_overview: "?function=OVERVIEW&symbol={symbol}&apikey={api_key}"
+    income_statement: "?function=INCOME_STATEMENT&symbol={symbol}&apikey={api_key}"
+    balance_sheet: "?function=BALANCE_SHEET&symbol={symbol}&apikey={api_key}"
+    cash_flow: "?function=CASH_FLOW&symbol={symbol}&apikey={api_key}"
+    news_sentiment: "?function=NEWS_SENTIMENT&tickers={symbol}&apikey={api_key}"
+  data_types:
+    - earnings
+    - fundamental_data
+    - financial_statements
+    - news_sentiment
+
+# NewsAPI (Free tier: 1,000 requests/day)
+newsapi:
+  base_url: "https://newsapi.org/v2"
+  description: "NewsAPI for general business and financial news"
+  rate_limit: "1000 requests/day (free tier)"
+  endpoints:
+    everything: "/everything"
+    top_headlines: "/top-headlines"
+    sources: "/sources"
+  data_types:
+    - financial_news
+    - company_news
+    - market_news
+
+# Data Categories and Priorities
+data_categories:
+  earnings:
+    description: "Quarterly earnings reports, estimates, and surprises"
+    priority: "high"
+    update_frequency: "daily"
+    sources: ["fmp", "finnhub", "eodhd", "alpha_vantage"]
+    
+  sec_filings:
+    description: "10-K, 10-Q, 8-K, proxy statements, and other SEC filings"
+    priority: "high"
+    update_frequency: "daily"
+    sources: ["sec_edgar"]
+    
+  corporate_actions:
+    description: "Stock splits, dividends, spin-offs, mergers"
+    priority: "medium"
+    update_frequency: "weekly"
+    sources: ["fmp", "eodhd"]
+    
+  insider_trading:
+    description: "Insider buy/sell transactions by executives and directors"
+    priority: "medium"
+    update_frequency: "daily"
+    sources: ["sec_edgar", "fmp", "finnhub"]
+    
+  analyst_data:
+    description: "Price targets, recommendations, upgrades/downgrades"
+    priority: "medium"
+    update_frequency: "daily"
+    sources: ["finnhub"]
+    
+  lawsuits:
+    description: "Legal proceedings and litigation (from 8-K filings)"
+    priority: "low"
+    update_frequency: "weekly"
+    sources: ["sec_edgar"]
+    
+  financial_news:
+    description: "Real-time financial news with sentiment analysis"
+    priority: "high"
+    update_frequency: "daily"
+    sources: ["newsapi", "finnhub", "alpha_vantage"]
+    
+  company_news:
+    description: "Company-specific news and press releases"
+    priority: "high"
+    update_frequency: "daily" 
+    sources: ["newsapi", "finnhub"]
+
+# File Storage Structure
+storage:
+  earnings_data: "earnings_data/{symbol}/{year}/"
+  sec_filings: "sec_filings/{cik}/{filing_type}/"
+  corporate_actions: "corporate_actions/{action_type}/"
+  insider_trading: "insider_trading/{symbol}/"
+  analyst_data: "analyst_data/{symbol}/"
+  
+# Rate Limiting and Error Handling
+rate_limiting:
+  default_delay: 0.5  # seconds between requests
+  retry_attempts: 3
+  backoff_factor: 2.0
+  
+error_handling:
+  log_errors: true
+  skip_on_error: true
+  max_consecutive_errors: 5

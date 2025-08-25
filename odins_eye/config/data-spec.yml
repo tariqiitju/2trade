@@ -1,0 +1,506 @@
+# Trading System Data Structure Specification
+# Machine-readable documentation of directory structure and data formats
+# Version: 1.0
+# Last Updated: 2025-08-23
+
+# Configuration
+config:
+  root_directory: "${DATA_ROOT}"  # Variable for base data directory
+  default_root: "W:/market-data"  # Default path if variable not set
+  storage_format: "parquet"       # Primary storage format
+  compression: "snappy"           # Compression algorithm
+  encoding: "utf-8"               # Text file encoding
+# Directory Structure
+directory_structure:
+  root: "${DATA_ROOT}"
+  subdirectories:
+    market_data:
+      path: "${DATA_ROOT}/market_data"
+      description: "Historical market data organized by intervals"
+      subdirectories:
+        daily:
+          path: "${DATA_ROOT}/market_data/daily"
+          description: "Daily OHLCV data with technical indicators"
+          file_pattern: "{symbol}.parquet"
+          data_format: "parquet"
+          retention: "15 years"
+        hourly:
+          path: "${DATA_ROOT}/market_data/hourly"
+          description: "Hourly intraday data (when available)"
+          file_pattern: "{symbol}.parquet"
+          data_format: "parquet"
+          retention: "2 years"
+        30min:
+          path: "${DATA_ROOT}/market_data/30min"
+          description: "30-minute intraday data"
+          file_pattern: "{symbol}.parquet"
+          data_format: "parquet"
+          retention: "2 months"
+        15min:
+          path: "${DATA_ROOT}/market_data/15min"
+          description: "15-minute intraday data"
+          file_pattern: "{symbol}.parquet"
+          data_format: "parquet"
+          retention: "2 months"
+        5min:
+          path: "${DATA_ROOT}/market_data/5min"
+          description: "5-minute intraday data"
+          file_pattern: "{symbol}.parquet"
+          data_format: "parquet"
+          retention: "2 months"
+        1min:
+          path: "${DATA_ROOT}/market_data/1min"
+          description: "1-minute high-frequency data"
+          file_pattern: "{symbol}.parquet"
+          data_format: "parquet"
+          retention: "1 week"
+
+    economic_data:
+      path: "${DATA_ROOT}/economic_data"
+      description: "Economic indicators from FRED"
+      file_pattern: "{indicator_symbol}.parquet"
+      data_format: "parquet"
+      retention: "No limit"
+
+    news_data:
+      path: "${DATA_ROOT}/news_data"
+      description: "Financial news with sentiment analysis"
+      file_pattern: "news_{YYYYMMDD}.json"
+      data_format: "json"
+      retention: "1 year"
+
+    trends_data:
+      path: "${DATA_ROOT}/trends_data"
+      description: "Google Trends search interest data"
+      file_pattern: "{keyword_or_symbol}_{YYYYMMDD}.json"
+      data_format: "json"
+      retention: "1 year"
+
+    processed:
+      path: "${DATA_ROOT}/processed"
+      description: "Processed and derived datasets"
+      data_format: "parquet"
+
+    cache:
+      path: "${DATA_ROOT}/cache"
+      description: "Temporary cached data"
+      retention: "7 days"
+      max_size: "5 GB"
+
+    backups:
+      path: "${DATA_ROOT}/backups"
+      description: "Data backups and snapshots"
+      retention: "30 days"
+
+    logs:
+      path: "${DATA_ROOT}/logs"
+      description: "System logs and monitoring data"
+      file_pattern: "module0.log*"
+      data_format: "text"
+      retention: "90 days"
+
+# Data Schemas
+data_schemas:
+  market_data:
+    description: "OHLCV market data with technical indicators"
+    format: "parquet"
+    compression: "snappy"
+    columns:
+      date:
+        type: "datetime64[ns]"
+        description: "Trading date or datetime"
+        nullable: false
+        index: true
+      open:
+        type: "float64"
+        description: "Opening price"
+        nullable: false
+      high:
+        type: "float64"
+        description: "Highest price"
+        nullable: false
+      low:
+        type: "float64"
+        description: "Lowest price"
+        nullable: false
+      close:
+        type: "float64"
+        description: "Closing price"
+        nullable: false
+      volume:
+        type: "int64"
+        description: "Trading volume"
+        nullable: false
+      symbol:
+        type: "string"
+        description: "Stock symbol"
+        nullable: false
+      # Technical Indicators (Daily Data)
+      sma_20:
+        type: "float64"
+        description: "20-day Simple Moving Average"
+        nullable: true
+        applies_to: ["daily"]
+      sma_50:
+        type: "float64"
+        description: "50-day Simple Moving Average"
+        nullable: true
+        applies_to: ["daily"]
+      sma_200:
+        type: "float64"
+        description: "200-day Simple Moving Average"
+        nullable: true
+        applies_to: ["daily"]
+      # Technical Indicators (Intraday Data)
+      sma_5:
+        type: "float64"
+        description: "5-period Simple Moving Average"
+        nullable: true
+        applies_to: ["1min", "5min", "15min", "30min", "hourly"]
+      vwap:
+        type: "float64"
+        description: "Volume Weighted Average Price"
+        nullable: true
+        applies_to: ["1min", "5min", "15min", "30min", "hourly"]
+      # Common Indicators
+      price_change:
+        type: "float64"
+        description: "Period-over-period price change (percentage)"
+        nullable: true
+      price_change_abs:
+        type: "float64"
+        description: "Absolute price change"
+        nullable: true
+      volatility_20:
+        type: "float64"
+        description: "20-period volatility (daily)"
+        nullable: true
+        applies_to: ["daily"]
+      volatility_10:
+        type: "float64"
+        description: "10-period volatility (intraday)"
+        nullable: true
+        applies_to: ["1min", "5min", "15min", "30min", "hourly"]
+      volume_sma_20:
+        type: "float64"
+        description: "20-period volume moving average (daily)"
+        nullable: true
+        applies_to: ["daily"]
+      volume_sma_10:
+        type: "float64"
+        description: "10-period volume moving average (intraday)"
+        nullable: true
+        applies_to: ["1min", "5min", "15min", "30min", "hourly"]
+      volume_ratio:
+        type: "float64"
+        description: "Volume ratio vs moving average"
+        nullable: true
+
+  economic_data:
+    description: "Economic indicators from FRED"
+    format: "parquet"
+    compression: "snappy"
+    columns:
+      date:
+        type: "datetime64[ns]"
+        description: "Observation date"
+        nullable: false
+        index: true
+      value:
+        type: "float64"
+        description: "Indicator value"
+        nullable: true
+      symbol:
+        type: "string"
+        description: "FRED series symbol"
+        nullable: false
+      indicator_name:
+        type: "string"
+        description: "Human-readable indicator name"
+        nullable: false
+      category:
+        type: "string"
+        description: "Indicator category"
+        nullable: false
+        enum: ["interest_rates", "inflation", "employment", "growth", "markets", "commodities"]
+      frequency:
+        type: "string"
+        description: "Data frequency"
+        nullable: false
+        enum: ["daily", "weekly", "monthly", "quarterly", "annual"]
+      importance:
+        type: "string"
+        description: "Market importance level"
+        nullable: false
+        enum: ["high", "medium", "low"]
+      description:
+        type: "string"
+        description: "Detailed indicator description"
+        nullable: true
+
+  news_data:
+    description: "Financial news articles with sentiment analysis"
+    format: "json"
+    encoding: "utf-8"
+    structure:
+      type: "array"
+      items:
+        type: "object"
+        properties:
+          title:
+            type: "string"
+            description: "Article headline"
+          description:
+            type: "string"
+            description: "Article summary/description"
+            max_length: 500
+          content:
+            type: "string"
+            description: "Article content excerpt"
+            max_length: 1000
+          source:
+            type: "string"
+            description: "News source name"
+          author:
+            type: "string"
+            description: "Article author"
+          url:
+            type: "string"
+            format: "uri"
+            description: "Article URL"
+          published_at:
+            type: "string"
+            format: "datetime"
+            description: "Publication timestamp (ISO 8601)"
+          symbols:
+            type: "array"
+            items:
+              type: "string"
+            description: "Related stock symbols extracted from text"
+          sentiment_score:
+            type: "number"
+            minimum: -1.0
+            maximum: 1.0
+            description: "Sentiment polarity score"
+          sentiment_label:
+            type: "string"
+            enum: ["positive", "negative", "neutral"]
+            description: "Sentiment classification"
+          category:
+            type: "string"
+            enum: ["earnings", "market", "economic", "company"]
+            description: "Article category"
+          article_id:
+            type: "string"
+            description: "Unique article identifier (MD5 hash)"
+            pattern: "^[a-f0-9]{16}$"
+
+  trends_data:
+    description: "Google Trends search interest data"
+    format: "json"
+    encoding: "utf-8"
+    structure:
+      type: "object"
+      properties:
+        keyword:
+          type: "string"
+          description: "Search keyword or stock symbol"
+        symbol:
+          type: "string"
+          description: "Associated stock symbol (empty for general keywords)"
+        timeframe:
+          type: "string"
+          description: "Time range for trends data"
+          examples: ["today 12-m", "today 3-m", "today 1-m"]
+        geo:
+          type: "string"
+          description: "Geographic region"
+          default: "US"
+        category:
+          type: "integer"
+          description: "Google Trends category ID"
+          default: 0
+        search_interest:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              date:
+                type: "string"
+                format: "datetime"
+                description: "Date of search interest measurement"
+              "{keyword}":
+                type: "integer"
+                minimum: 0
+                maximum: 100
+                description: "Search interest score (0-100)"
+        related_queries:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              query:
+                type: "string"
+                description: "Related search query"
+              value:
+                type: "integer"
+                description: "Relative search volume"
+        rising_queries:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              query:
+                type: "string"
+                description: "Rising search query"
+              value:
+                type: "integer"
+                description: "Growth percentage or breakout indicator"
+        downloaded_at:
+          type: "string"
+          format: "datetime"
+          description: "Data download timestamp (ISO 8601)"
+
+# Metadata Files
+metadata_files:
+  storage_metadata:
+    path: "${DATA_ROOT}/metadata.json"
+    description: "Master metadata file tracking all stored datasets"
+    format: "json"
+    schema:
+      type: "object"
+      properties:
+        "{symbol}_{data_type}":
+          type: "object"
+          properties:
+            symbol:
+              type: "string"
+            data_type:
+              type: "string"
+            start_date:
+              type: "string"
+              format: "date"
+            end_date:
+              type: "string"
+              format: "date"
+            record_count:
+              type: "integer"
+            file_path:
+              type: "string"
+            created_at:
+              type: "string"
+              format: "datetime"
+            last_updated:
+              type: "string"
+              format: "datetime"
+
+  download_checkpoint:
+    path: "${DATA_ROOT}/../data/download_checkpoint.json"
+    description: "Download progress checkpoint for resuming interrupted downloads"
+    format: "json"
+    schema:
+      type: "object"
+      properties:
+        completed_symbols:
+          type: "array"
+          items:
+            type: "string"
+        last_update:
+          type: "string"
+          format: "datetime"
+
+# File Naming Conventions
+naming_conventions:
+  market_data_files:
+    pattern: "{SYMBOL}.parquet"
+    examples: ["AAPL.parquet", "MSFT.parquet", "SPY.parquet"]
+
+  economic_data_files:
+    pattern: "{FRED_SYMBOL}.parquet"
+    examples: ["DGS10.parquet", "UNRATE.parquet", "VIXCLS.parquet"]
+
+  news_data_files:
+    pattern: "news_{YYYYMMDD}.json"
+    examples: ["news_20250823.json", "news_20250824.json"]
+
+  trends_data_files:
+    pattern: "{KEYWORD_OR_SYMBOL}_{YYYYMMDD}.json"
+    examples: ["AAPL_20250823.json", "stock_market_20250823.json", "bitcoin_20250823.json"]
+
+  log_files:
+    pattern: "module0.log.{YYYY-MM-DD}"
+    examples: ["module0.log", "module0.log.2025-08-23"]
+
+# Data Quality Standards
+data_quality:
+  validation_rules:
+    market_data:
+      - "OHLC relationships: Open, High, Low, Close must satisfy High >= max(Open,Close) and Low <= min(Open,Close)"
+      - "Volume must be non-negative integer"
+      - "Price change limits: Daily change should not exceed 50% except in exceptional circumstances"
+      - "No future dates allowed"
+      - "Missing data gaps should not exceed configured thresholds"
+
+    economic_data:
+      - "Values must be numeric where applicable"
+      - "Dates must be valid and not future-dated"
+      - "Frequency must match expected pattern (daily, monthly, etc.)"
+
+    news_data:
+      - "Article IDs must be unique"
+      - "Publication dates must be valid timestamps"
+      - "Sentiment scores must be between -1.0 and 1.0"
+      - "URLs must be valid URIs"
+
+    trends_data:
+      - "Search interest values must be 0-100"
+      - "Dates must be chronologically ordered"
+      - "Keywords must not be empty"
+
+  outlier_detection:
+    methods: ["z_score", "iqr"]
+    thresholds:
+      z_score: 3.0
+      iqr_factor: 1.5
+
+# Storage Optimization
+storage_optimization:
+  compression:
+    parquet_files: "snappy"
+    json_files: "none"  # Already compact for small files
+
+  partitioning:
+    market_data: ["year", "month", "symbol"]  # Future enhancement
+    economic_data: ["category", "year"]       # Future enhancement
+
+  indexing:
+    primary_keys:
+      market_data: ["date", "symbol"]
+      economic_data: ["date", "symbol"]
+
+  cleanup_policies:
+    cache_retention: "7 days"
+    log_retention: "90 days"
+    news_retention: "1 year"
+    trends_retention: "1 year"
+
+# API Endpoints (for future reference)
+api_endpoints:
+  base_url: "http://localhost:8080"
+  endpoints:
+    market_data: "/api/market-data/{symbol}"
+    economic_data: "/api/economic-data/{indicator}"
+    news_data: "/api/news"
+    trends_data: "/api/trends/{keyword}"
+    simulation: "/api/simulation"
+
+# Version History
+version_history:
+  "1.0":
+    date: "2025-08-23"
+    description: "Initial data structure specification"
+    changes:
+      - "Defined complete directory structure"
+      - "Documented all data schemas"
+      - "Established naming conventions"
+      - "Added data quality standards"

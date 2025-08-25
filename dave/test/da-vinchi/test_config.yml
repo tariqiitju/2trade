@@ -1,0 +1,74 @@
+test_config:
+  # Data configuration
+  data_root: null  # Uses default from environment or W:/market-data
+  test_instruments:
+    - "AAPL"
+    - "MSFT" 
+    - "TSLA"
+    - "GOOGL"
+    - "AMZN"
+  
+  # Date range for tests
+  test_date_range:
+    start_date: "2023-01-01"
+    end_date: "2023-12-31"
+  
+  # Market data interval
+  interval: "daily"
+  
+  # Stage 0: Data Validator config
+  stage0_config:
+    validation:
+      winsorize_percentiles: [1, 99]
+      min_trading_days: 100
+      max_missing_percentage: 15.0
+      outlier_std_threshold: 5.0
+      volume_min_threshold: 1000
+      price_min_threshold: 0.01
+      validate_adjusted_prices: true
+      align_trading_calendar: true
+      timezone_validate: true
+  
+  # Stage 1: Base Features config  
+  stage1_config:
+    volatility_windows: [5, 10, 20, 60]
+    return_windows: [5, 10, 20, 60, 126]
+    ema_spans: [12, 26, 50]
+    sma_windows: [10, 20, 50]
+    rsi_period: 14
+    macd_fast: 12
+    macd_slow: 26
+    macd_signal: 9
+    stoch_k_period: 14
+    stoch_d_period: 3
+    adx_period: 14
+    atr_period: 14
+    bollinger_period: 20
+    bollinger_std: 2
+    amihud_windows: [5, 20, 60]
+    roll_spread_window: 20
+  
+  # Test execution settings
+  test_settings:
+    verbose: true
+    save_results: true
+    cache_enabled: false  # Disable caching for tests
+    fail_fast: false
+    timeout_seconds: 300
+  
+  # Expected results and thresholds
+  expected_results:
+    stage0:
+      min_data_quality_score: 80.0
+      max_missing_percentage: 10.0
+      required_columns: ["open", "high", "low", "close", "volume", "close_adj"]
+    
+    stage1:
+      min_feature_count: 50
+      expected_feature_categories:
+        - "returns"
+        - "volatility" 
+        - "momentum"
+        - "trend"
+        - "bands"
+        - "liquidity"
